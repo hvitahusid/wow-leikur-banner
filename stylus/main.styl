@@ -1,0 +1,137 @@
+@import "nib"
+@import "nib/gradients"
+
+global-reset()
+
+header_width = 284px
+total_width = 1018px
+total_height = 360px
+
+body
+	overflow:hidden
+	font-family: Helvetica, Arial, sans-serif
+
+#container
+	width: total_width
+	height: total_height
+	background-image: url('../img/bg.png')
+	overflow: hidden
+
+	header
+		position: relative
+		width: header_width
+		height: total_height
+		float: left
+		background-image: url('../img/top50_skilabod_on_top.png')
+		z-index: 1000
+		box-shadow: 0 0 12px rgba(0,0,0,0.3)
+
+	#content
+		position: relative
+		overflow:hidden
+		width: (total_width - header_width)
+		height: total_height
+
+		float:left
+		z-index: 100
+
+		.top, .bottom
+			height: 42px
+			width: (total_width - header_width)
+
+		.top
+			background-color: #b31ca0
+
+		.bottom
+			position: relative
+			background-color: #9b238c
+
+			.prev, .next
+				width: 10px
+				height: 15px
+				position: absolute
+				top: 14px
+				cursor: pointer
+
+			.prev
+				left: 18px
+				background-image: url('../img/nav_left_arrow.png')
+
+			.next
+				right: 18px
+				background-image: url('../img/nav_right_arrow.png')
+
+		.right-shadow
+			box-shadow: 0 0 14px 3px #300D2B
+			absolute: right 0 top 0
+			height: 100%
+			width: 0
+			z-index: 1000
+
+		#entries
+			overflow: hidden
+			position: relative
+			height: (total_height - 42px * 2)
+
+			.slider
+				clearfix()
+				padding-left: 30px
+
+				.entry
+					position: relative
+					display: block
+					float: left
+					width: 216px
+					background-color: white
+					margin: 17px 44px 0 0
+					border-radius: 2px
+					box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8)
+					color: #9b238c
+					text-decoration: none
+					font-size: 15px
+					overflow: hidden
+
+					img
+						margin:0
+						padding:0
+						display:block
+						float:none
+						border: 3px solid white
+						border-radius: 2px
+						box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.73);
+
+					div.play
+						position: absolute
+						top:0
+						left:0
+						width:100%
+						height:100%
+						background-image: url('../img/play.png')
+						background-position: 50% 50%
+						background-repeat: no-repeat
+
+					div.fb-likes
+						opacity: 0.9
+						position: absolute
+						bottom: 9px
+						right: 3px
+						color: white
+						font-weight: normal
+						font-size: 15px
+						line-height: 22px
+						padding: 3px 6px 3px 31px
+						height: 20px
+						background-color: purple
+						background-color: rgba(150, 0, 142, 0.7)
+						background-image: url('../img/like.png')
+						background-position: 5px 2px
+						background-repeat: no-repeat
+
+					div.name
+						padding: 6px
+
+					&:hover
+						//box-shadow: 0 0 5px purple
+
+						div.fb-likes
+							opacity: 1

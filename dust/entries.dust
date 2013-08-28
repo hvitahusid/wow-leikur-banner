@@ -1,0 +1,11 @@
+{#entries}
+<a href="http://moments.wow.is/view/best/{id}/" class="entry {#css_classes}{.} {/css_classes}" data-id="{id}" target="_NEW">
+	<img src="http://moments.wow.is{big_thumb_url|s}">
+
+	{?is_video}<div class="play"></div>{/is_video}
+
+	{?fb_likes}<div class="fb-likes">{fb_likes}</div>{/fb_likes}
+
+	<div class="name">{name}</div>
+</a>
+{/entries}
