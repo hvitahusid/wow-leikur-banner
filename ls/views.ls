@@ -12,6 +12,7 @@ class Entries extends Backbone.View
         @current = 0
 
     events:
+        "click .entry": "click"
         "click .next": "next"
         "click .prev": "prev"
         "mouseleave": "mouseleave"
@@ -34,21 +35,18 @@ class Entries extends Backbone.View
 
         pos = (@current * @entries_per_slot * @entry_width)
 
-        pos = @max_pos if pos > @max_pos
+        if pos > @max_pos
+            pos = @max_pos
 
-        @animation.kill() if @animation
-
-        @animation = TweenMax.to @slider, 0.5, do
-            margin-left: pos * -1
+        @slider.stop().animate {margin-left: pos * -1}, ~>
+            @lazyload()
 
         return true
 
     prev: ->
-        #clearInterval(@interval) if @interval?
         @move(@current - 1)
 
     next: ->
-        #clearInterval(@interval) if @interval?
         @move(@current + 1)
 
     render: (entries) ->
@@ -68,11 +66,21 @@ class Entries extends Backbone.View
                     @move(0) if not @move(@current + 1)
             , 4000
 
+            @lazyload()
+
     mouseenter: ->
         @mouseover = true
 
     mouseleave: ->
         @mouseover = false
 
+    click: ->
+        console.log 'click entry'
+
+    lazyload: ->
+        #@slider.find('.entry img[lazy-src]').each (index, img) ~>
+        #    if (@current + 1) >= (index + 1 / @entries_per_slot)
+        #        $(img).attr('src', $(img).attr('lazy-src'))
+        #        $(img).removeAttr('lazy-src')
 
 entries = new Entries()

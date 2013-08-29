@@ -1,0 +1,54 @@
+total_height = 400px
+total_width = 310px
+header_width = total_width
+footer_height = 88px
+
+@import "base/main"
+@import "nib/gradients"
+
+#container
+	background-image: none
+	background: linear-gradient(top, #7e1470, #6b1460)
+
+	#header
+		float:none
+		absolute: top 0 left 0
+		image: '../img/310x400/intro_skilabod.png'
+		z-index: 2000
+		box-shadow: none
+
+	#footer
+		width: total_width
+		height: footer_height
+		absolute: bottom 0 left 0
+		image: '../img/310x400/brand_footer.png'
+
+	#content
+		content_height = total_height - footer_height
+		width: total_width
+		height: content_height
+		#entries
+			width: total_width
+			margin-top: 18px
+
+			.slider
+				padding-left: 47px
+
+				.entry
+					margin-right: 50px
+
+		.prev, .next
+			cursor: pointer
+			height: 23px
+			width:23px
+			position: absolute
+			top: (content_height / 2 - @height)
+			z-index: 3000
+
+		.prev
+			left: 5px
+			image: '../img/310x400/nav_go_left.png'
+
+		.next
+			right: 5px
+			image: '../img/310x400/nav_go_right.png'
