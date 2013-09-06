@@ -74,8 +74,11 @@ class Entries extends Backbone.View
     mouseleave: ->
         @mouseover = false
 
-    click: ->
-        console.log 'click entry'
+    click: (event) ->
+        $entry = $(event.target).closest('.entry')
+        entry_id = parseInt($entry.data().id)
+        ga('send', 'event', 'entry', 'click', '', entry_id)
+        return true
 
     lazyload: ->
         #@slider.find('.entry img[lazy-src]').each (index, img) ~>
